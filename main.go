@@ -44,7 +44,7 @@ func updateDNSRecord(fqdn string, recordType string, ip string, checkMode bool) 
 		}
 		log.Printf("%s points to %s, the record will be updated.", r.Name, r.Content)
 
-		if checkMode == true {
+		if checkMode {
 			log.Println("Check mode is active, no changes will be made.")
 		} else {
 			log.Println("Setting", fqdn, "=>", ip, "...")
