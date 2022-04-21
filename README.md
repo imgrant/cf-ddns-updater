@@ -25,11 +25,13 @@ This is a simple Go utility for updating a DNS record via the [Cloudflare v4 API
 ### Command line options
 
 ```
-  -c    Config file (default: "config.json")
+  -c    Config file (default: "/home/user/.config/cf-ddns-updater/config.json")
   -n    Check mode (dry run, default: off)
 ```
 
-The default configuration filename is `config.json` (see below). If your configuration file is named otherwise, use the `-c` command line parameter to specify the filename.
+The default configuration filename is `config.json` (see below), the exact location is dependent on the operating system; the standard user configuration directories are used (e.g., following the XDG Base Directory Specification for Linux/macOS, which is usually `$HOME/.config`, and `%APPDATA%` for Windows).
+
+The output from `cf-ddns-updater -h` will show the default location in effect. If your configuration file is named  otherwise or located elsewhere, use the `-c` command line parameter to specify the path/filename to use.
 
 To perform a dry run, where the public IP address is determined but the DNS record is not actually updated, use the `-n` flag to enable check mode.
 

@@ -6,10 +6,12 @@ import (
 	"flag"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/bobesa/go-domain-util/domainutil"
 	"github.com/cloudflare/cloudflare-go"
 	"github.com/rdegges/go-ipify"
+	"github.com/zchee/go-xdgbasedir"
 )
 
 type Config struct {
@@ -18,6 +20,7 @@ type Config struct {
 }
 
 var config Config
+var appName = "cf-ddns-updater"
 
 func updateDNSRecord(fqdn string, recordType string, ip string, checkMode bool) error {
 	api, err := cloudflare.NewWithAPIToken(config.APIToken)
@@ -70,7 +73,8 @@ func loadConfig(fn string) error {
 }
 
 func main() {
-	cf := flag.String("c", "config.json", "Config file")
+	configFile := filepath.FromSlash(xdgbasedir.ConfigHome() + "/" + appName + "/config.json")
+	cf := flag.String("c", configFile, "Config file")
 	check_mode := flag.Bool("n", false, "Check mode (dry run)")
 	flag.Parse()
 	err := loadConfig(*cf)
