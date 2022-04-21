@@ -17,5 +17,5 @@
 # Config file
 config.json
 
-# Built binary
-cf-ddns-updater
+# Output binaries
+cf-ddns-updater*
