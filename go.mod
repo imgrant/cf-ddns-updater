@@ -6,6 +6,7 @@ require (
 	github.com/bobesa/go-domain-util v0.0.0-20190911083921-4033b5f7dd89
 	github.com/cloudflare/cloudflare-go v0.37.0
 	github.com/rdegges/go-ipify v0.0.0-20150526035502-2d94a6a86c40
+	github.com/zchee/go-xdgbasedir v1.0.3
 )
 
 require (
